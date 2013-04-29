@@ -1,0 +1,8 @@
+a {text-decoration: none;}
+.carousel-block {height: 470px; width: 925px; position: relative;}
+	.carousel-block .carousel-items {}
+		.carousel-block .carousel-items .carousel-item {position: absolute; top: 0; left: 0;}
+			.carousel-block .carousel-items .carousel-item p {font-size: 130%; color: #999; text-align: center; margin: 10px 0 0 0;}
+	.carousel-block .carousel-nav {position: absolute; bottom: 10px; right: 10px;}		
+		.carousel-block .carousel-nav a {display: block; height: 16px; width: 16px; margin-right: 3px; background: url(../img/spr-icons.png) no-repeat; background-position: 0 -64px;  float: left;}
+		.carousel-block .carousel-nav  a.on {background-position: 0 -48px;}
