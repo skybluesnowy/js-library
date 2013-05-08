@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>Javascript - Mootools Drag 'n Drop</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css">
+		body {font-family: arial, helvetica, sans-serif; margin: 15px;}
+		strong {font-weight: bold;}
+		h1 {font-size: 120%; font-weight: bold;}
+		#arse {position: absolute; top: 150px; left: 10px; z-index: 100; padding: 10px; background: #F4B95F; cursor: move;}
+		#elbow {position: absolute; top: 150px; left: 130px; z-index: 110; padding: 10px; background: #F4B95F; cursor: move;}
+		#totals {position: absolute; top: 240px; left: 260px;}
+		#totals strong {color: #f00;}
+		.droppable {width: 100px; height: 100px; position: absolute; left: 10px; top: 200px; }
+		.droppable-e {width: 100px; height: 100px; position: absolute; left: 130px; top: 200px;}
+		#target-a {background: url(backside.gif) no-repeat; border: 1px #f00 solid;}
+		#target-e {background: url(elbow.gif) no-repeat; border: 1px #f00 solid;}
+
+	</style>
+	<script src="../static/js/moo/mootools-1.2.5-core-yc.js" type="text/javascript"></script>
+	<script src="../static/js/moo/mootools-1.2.4.4-more.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	window.addEvent('domready', function(){
+		var count = 0;
+		var msgs = function(){
+			var successmsg = 'Congratulations, you can be a Project Manager!';
+			var blank = '';
+			if (count!=2)  {
+				$$('#totals span').set('html', count);
+				$$('#totals strong').set('html', blank);
+			} 
+			else {
+				$$('#totals span').set('html', count);
+				$$('#totals strong').set('html', successmsg);
+			}
+		}
+
+		var myDragArse = new Drag.Move('arse', {
+			droppables: '.droppable',
+			onDrop: function(element, droppable, event){
+				if (!droppable) {
+					document.id('target-a').setStyle('border', '1px #f00 solid');
+				}	
+				else {
+					count=count+1;
+					document.id('arse').setStyles({'top': '230px', 'left': '29px'});
+					document.id('target-a').setStyle('border', '1px #0f0 solid');
+					msgs();
+					}
+				},
+				onEnter: function(element, droppable){},
+				onLeave: function(element, droppable){
+					count=count-1;
+					msgs();
+				}
+		});
+		
+		var myDragElbow = new Drag.Move('elbow', {
+			droppables: '.droppable-e',
+			onDrop: function(element, droppable, event){
+				if (!droppable) {
+					document.id('target-e').setStyle('border', '1px #f00 solid');
+				}	
+				else {
+					count=count+1;
+					document.id('elbow').setStyles({'top': '230px', 'left': '150px'});
+					document.id('target-e').setStyle('border', '1px #0f0 solid');
+					msgs();
+					}
+				},
+				onEnter: function(element, droppable){},
+				onLeave: function(element, droppable){
+					count=count-1;
+					msgs();
+				}
+			});
+
+	});
+	</script>
+</head>
+<body>
+
+<h1>Javascript - Mootools drag and drop</h1>
+<p class="subhdr"><strong>Default state:</strong> Static draggable and droppable containers</p>
+<p class="subhdr"><strong>Actions:</strong> Dragging keywords and dropping on corresponding image to activate validation</p>
+<p class="subhdr"><strong>Requirements:</strong> Mootools 1.2.5 core, Mootools 1.2.4.4 more (with Drag.Move)<br /><br /></p>
+
+<div id="arse">Arse</div>
+<div id="elbow">Elbow</div>
+
+<div class="droppable" id="target-a" style="background-color: #fff;"></div>
+<div class="droppable-e" id="target-e"></div>
+
+<div id="totals">You've got <span>0</span>/2 <strong></strong></div>
+
+
+</body>
+</html>

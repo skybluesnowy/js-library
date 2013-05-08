@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>Javascript - Mootools adjust div element height to align boxes</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="../static/css/reset.css">
+	<style type="text/css">
+		body {font-family: arial, helvetica, sans-serif; margin: 15px;}
+		strong {font-weight: bold;}
+		h1 {font-size: 120%; font-weight: bold;}
+		h2 {font-size: 110%;}
+		.boxes {float: left; margin-right: 15px; width: 120px; border: 1px #666 solid; padding: 10px;}
+		.boxes a {text-decoration: none; font-weight: bold; display: block; padding: 10px 0 0 0;}
+		#reset {clear: left; padding: 10px 0;}
+	</style>
+	<script src="../static/js/moo/mootools-1.2.5-core-yc.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var adjustH = function(){
+			newHeight = 0;
+			$$('div.boxes p').each(function(el){
+			   var theHeight = el.getSize().y;
+				if(theHeight > newHeight){
+					newHeight = theHeight;
+				};
+			});
+			$$('div.boxes p').setStyle('height', newHeight);
+		};
+
+		window.addEvent('domready', function(){
+			adjustH();
+			$$('div.boxes a.reset').addEvent('click', function(event){
+				event.stop();
+				$$('div.boxes a.reset').setStyle('display', 'none');
+				$$('div.boxes a.fix').setStyle('display', 'block');
+				$$('div.boxes p').setStyle('height', 'auto');
+			});
+			
+			$$('div.boxes a.fix').addEvent('click', function(event){
+				event.stop();
+				$$('div.boxes a.fix').setStyle('display', 'none');
+				$$('div.boxes a.reset').setStyle('display', 'block');
+				$$('div.boxes p').setStyle('height', newHeight);
+			});
+			
+		});
+	</script>
+</head>
+<body>
+<h1>Javascript - Mootools adjust div element height to align boxes</h1>
+<p class="subhdr"><strong>Default state:</strong> P element height within div.boxes is resized to tallest size on domready</p>
+<p class="subhdr"><strong>Actions:</strong> Click links to toggle P height</p>
+<p class="subhdr"><strong>Requirements:</strong> Mootools 1.2.5 core, javascript enabled<br /><br /></p>
+<div class="boxes">
+	<h2>Box 1</h2>
+	<p> And herein lies some copy</p>
+	<a href="" class="reset">Reset height</a>
+	<a href="" class="fix" style="display: none;">Fix height</a>
+</div>
+
+<div class="boxes">
+	<h2>Box 2</h2>
+	<p> And herein lies some more copy which is more than box 1</p>
+	<a href="" class="reset">Reset height</a>
+	<a href="" class="fix" style="display: none;">Fix height</a>
+</div>
+
+<div class="boxes">
+	<h2>Box 3</h2>
+	<p> And herein lies some more copy which is more than box 1, more than box 2 and getting really long</p>
+	<a href="" class="reset">Reset height</a>
+	<a href="" class="fix" style="display: none;">Fix height</a>
+</div>
+
+<div class="boxes">
+	<h2>Box 4</h2>
+	<p> And herein lies some more copy which is more than box 1, 2 and 3. This is getting really long now, and will knock your knickers off when you see how long it actually is</p>
+	<a href="" class="reset">Reset height</a>
+	<a href="" class="fix" style="display: none;">Fix height</a>
+</div>
+
+<div class="boxes">
+	<h2>Box 5</h2>
+	<p> And herein lies some copy</p>
+	<a href="" class="reset">Reset height</a>
+	<a href="" class="fix" style="display: none;">Fix height</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>Play video from image replacement with oncomplete action</title>
+<link rel="stylesheet" type="text/css" href="../static/css/reset.css">
+	<style type="text/css">
+		body {font-family: arial, helvetica, sans-serif; margin: 15px;}
+		strong {font-weight: bold;}
+		h1 {font-size: 120%; font-weight: bold;}
+		p {clear: left; padding: 8px 0 0; font-size: 90%;}
+		.container {width: 320px; height: 196px; position: relative;}
+		#action {width: 320px; height: 196px; background: #ccc; position: absolute; left: 0; top: 0; z-index:1}
+		#reaction {width: 320px; height: 196px; background: #ccc; position: absolute; left: 0; top: 0; z-index:1}
+		#placeholder1 { position: absolute; left: 0; top: 10; z-index: 2;}
+	</style>
+
+<script type="text/javascript" src="/static/js/swfobject/swfobject.js"></script>
+<script type="text/javascript">
+	function playerReady(obj) {
+		player = gid(obj.id);
+		player.addModelListener('STATE', 'stateMonitor');
+	};
+	function stateMonitor(obj){
+		if(obj.newstate == 'COMPLETED'){
+			//console.log("Video complete");
+			showEndScreen = document.getElementById('reaction');		
+			showEndScreen.style.display=("block");	
+			document.getElementById("video").innerHTML = "<div id=\"placeholder1\"></div>";	
+			document.getElementById("message").innerHTML = "Video complete";
+		}
+	};
+	function gid(name){
+		return document.getElementById(name);
+	};
+	
+	function createPlayer() {
+		document.getElementById('reaction').style.display=("none");
+		var flashvars = {
+			file:"/static/flv/one.flv", 
+			autostart:"true"
+		}
+	
+		var params = {
+			allowfullscreen:"true", 
+			allowscriptaccess:"always"
+		}
+	
+		var attributes = {
+			id:"player1",  
+			name:"player1"
+		}
+		hideLayer = document.getElementById('action');
+		hideLayer.style.display=("none");
+		document.getElementById("message").innerHTML = "Video started";
+		swfobject.embedSWF("/static/swf/player.swf", "placeholder1", "320", "196", "9.0.115", false, flashvars, params, attributes);
+	}
+</script>
+
+</head>
+<body>
+<h1>Javascript video integration - 1 video actioned by image, with image on complete</h1>
+<p class="subhdr"><strong>Default state:</strong> 1static image, static text</p>
+<p class="subhdr"><strong>Actions:</strong> Click on image to autoplay video.</p>
+<p class="subhdr"><strong>Requirements:</strong> Longtail SWF player, swfobject.js v2.1</p>
+<p class="subhdr">Notes: Utilises Longtail swfplayer listeners to load replacement image and text on video completion<br /><br /></p>
+<div class="container">
+	<div id="action"><a href="javascript:void(0);" onclick="createPlayer()"><img src="/static/img/click.gif" width="322" height="198" alt="" border="0"/></a></div>
+	<div id="reaction" style="display: none;"><a href="javascript:void(0);" onclick="createPlayer()"><img src="/static/img/click-again.gif" width="322" height="198" alt="" border="0"/></a></div>
+	<div id="video">
+		<div id="placeholder1"></div>
+	</div>	
+</div>
+<p id="message">Custom start and end graphics</p>
+
+
+</body>
+</html>
+

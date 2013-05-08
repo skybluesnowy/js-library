@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>Toggle videos from image replacement - alternative version</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="../static/css/reset.css">
+	<style type="text/css">
+		body {font-family: arial, helvetica, sans-serif; margin: 15px;}
+		strong {font-weight: bold;}
+		h1 {font-size: 120%; font-weight: bold;}
+		p {clear: left; padding: 8px 0 0; font-size: 90%;}
+		#container-one, #container-two {display: block; height: 288px; width: 447px; float: left; margin-right: 20px;} 
+	</style>
+	<script src="/static/js/moo/mootools-1.2.5-core-yc.js" type="text/javascript"></script>
+	<script type="text/javascript" src="/static/js/swfobject/swfobject.js"></script>
+	<script type="text/javascript">
+	
+		// I've just set up a few variables to make the function code leaner 	
+		var file1 = "/static/flv/one.flv";
+		var file2 = "/static/flv/two.flv";
+		var preview1 = "<div id=\"placeholder-one\"><img src=\"/static/img/preview1.jpg\" alt=\"Boo\"/></div>";
+		var preview2 ="<div id=\"placeholder-two\"><img src=\"/static/img/preview2.jpg\" alt=\"Bah\"/></div>";
+		var image1 = "preview1.jpg";
+		var image2 = "preview2.jpg";
+		var alternative ="<div class=\"alternative\">To view this movie, the latest Adobe Flash Player plugin needs to be installed in the browser. To download and install, please visit the <a href=\"http://get.adobe.com/flashplayer/\" title=\"Download Adobe Flash Player. Opens new window\" target=\"_blank\">Adobe website</a>.</div>";
+		
+		// Set up a listener on the selected player. Listeners available are: BUFFERING, PLAYING, PAUSED, COMPLETED, IDLE (stopped)
+		function playerReady(obj) {
+			player = gid(obj.id);
+			player.addModelListener('STATE', 'stateMonitor');
+		};
+		
+		// Conditionals to set behaviour dependant on video state
+		function stateMonitor(obj){
+			//console.log(obj.newstate);
+			if((obj.newstate == 'COMPLETED') || (obj.newstate == 'IDLE') ) {
+				document.getElementById("container-one").innerHTML = preview1;
+				document.getElementById("container-two").innerHTML = preview2;
+			}
+		};
+		function gid(name){
+			return document.getElementById(name);
+		};
+		
+		window.addEvent('domready', function(){
+			// Click event to fire video 1, and update video 2 container
+			$('container-one').addEvent('click', function(event){
+				event.stop();
+				// Standard flash embed vars/params/atrribs - using vars declared above
+				var flashvars = {
+					file: file1, 
+					image: image1,
+					autostart:"true"
+				}
+				var params = {
+					allowfullscreen:"true", 
+					allowscriptaccess:"always"
+				}
+				var attributes = {
+					id:"playerone",  
+					name:"playerone"
+				}
+				
+				//	Check plugin version and write out alt content if it's below spec
+				if (Browser.Plugins.Flash.version != 0 && Browser.Plugins.Flash.version >= 10) {
+					swfobject.embedSWF("/static/swf/player.swf", "placeholder-one", "447", "288", "9.0.115", false, flashvars, params, attributes);
+				document.getElementById("container-two").innerHTML = preview2;
+				}	else {
+					document.getElementById("placeholder-one").innerHTML = alternative;
+				}
+			});
+			
+			// Click event to fire video 2, and update video 1 container
+			$('container-two').addEvent('click', function(event){
+				var flashvars = {
+					file: file2, 
+					image: image2,
+					autostart:"true"
+				}
+				var params = {
+					allowfullscreen:"true", 
+					allowscriptaccess:"always"
+				}
+				var attributes = {
+					id:"playertwo",  
+					name:"playertwo"
+				}
+				
+				//	Check plugin version and write out alt content if it's below spec
+				if (Browser.Plugins.Flash.version != 0 && Browser.Plugins.Flash.version >= 10) {
+					swfobject.embedSWF("/static/swf/player.swf", "placeholder-two", "447", "288", "9.0.115", false, flashvars, params, attributes);
+					document.getElementById("container-one").innerHTML = preview1;
+				}	else {
+					document.getElementById("placeholder-two").innerHTML = alternative;
+				}
+			});
+			
+		});		
+	</script>
+</head>
+<body>
+<h1>Javascript video integration - 2 video toggle</h1>
+<p class="subhdr"><strong>Default state:</strong> 2 static images</p>
+<p class="subhdr"><strong>Actions:</strong> Click on image to autoplay video, return other video to static state.</p>
+<p class="subhdr"><strong>Requirements:</strong> Mootools 1.2.5 core, Longtail SWF player, swfobject.js v2.1</p>
+<p class="subhdr"><strong>Notes*:</strong> Includes closing listener to serve replacement image<br /><br /></p>
+
+<div id="container-one">
+	<div id="placeholder-one"><img src="/static/img/preview1.jpg" alt="Boo" /></div>
+</div>	
+					
+<div id="container-two">
+	<div id="placeholder-two"><img src="/static/img/preview2.jpg" alt="Bah" /></div>
+</div>	
+<p >* If you encounter some glitches with this script, first check <br />
+the source video. I recently had an issue on McDonalds where this <br />
+wasn't working, re-encoded the videos and it worked fine.</p>
+</body>
+</html>

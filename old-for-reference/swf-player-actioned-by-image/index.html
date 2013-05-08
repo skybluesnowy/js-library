@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Play video from image replacement - includes controls - Native JS</title>
+
+<script type="text/javascript" src="/static/js/swfobject/swfobject.js"></script>
+<script type="text/javascript">
+	var player = null;
+	function playerReady(thePlayer) {
+		player = window.document[thePlayer.id];
+	}
+	
+	function createPlayer() {
+		var flashvars = {
+			file:"/static/flv/one.flv", 
+			autostart:"true"
+		}
+	
+		var params = {
+			allowfullscreen:"true", 
+			allowscriptaccess:"always"
+		}
+	
+		var attributes = {
+			id:"player1",  
+			name:"player1"
+		}
+		hideLayer = document.getElementById('action');
+		hideLayer.style.display=("none");
+		swfobject.embedSWF("/static/swf/player.swf", "placeholder1", "320", "196", "9.0.115", false, flashvars, params, attributes);
+	}
+</script>
+	<style type="text/css">
+		body {font-family: arial, helvetica, sans-serif; margin: 15px;}
+		strong {font-weight: bold;}
+		h1 {font-size: 120%; font-weight: bold;}
+		p {clear: left; padding: 8px 0 0; font-size: 90%;}
+		.container {width: 320px; height: 196px; position: relative;}
+		#action {width: 320px; height: 196px; background: #ccc; position: absolute; left: 0; top: 0; z-index:1}
+		#placeholder1 { position: absolute; left: 0; top: 10; z-index: 2;}
+	</style>
+</head>
+<body>
+<h1>Javascript video integration - 1 image</h1>
+<p class="subhdr"><strong>Default state:</strong> 1 static image</p>
+<p class="subhdr"><strong>Actions:</strong> Click on image to autoplay video.</p>
+<p class="subhdr"><strong>Requirements:</strong> Longtail SWF player, swfobject.js v2.1</p>
+<p class="subhdr"><strong>Notes*:</strong> Includes controls<br /><br /></p>
+
+<div class="container">
+	<div id="action"><a href="javascript:void(0);" onclick="createPlayer()"><img src="/static/img/click.gif" width="322" height="198" alt="" border="0"/></a></div>
+	<div id="placeholder1"></div>
+</div>
+
+<div><a href="#" onclick="player.sendEvent('PLAY')">play/pause toggle</a></div>
+
+<div><a href="#" onclick="player.sendEvent('STOP')">stop playing and buffering</a></div>
+
+<div><a href="#" onclick="player.sendEvent('SEEK', 10)">seek absolute position (10th. second)</a></div>
+
+<div><a href="#" onclick="player.sendEvent('VOLUME', 50)">set absolute volume 50%</a></div>
+
+</body>
+</html>
+

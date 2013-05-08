@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>Javascript - Mootools add class elements using odd/even/child selectors</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css">
+		body {font-family: arial, helvetica, sans-serif; margin: 15px;}
+		body.js em {color: #00f; font-weight: bold;}
+		strong {font-weight: bold;}
+		h1 {font-size: 120%; font-weight: bold;}
+	</style>
+	<script src="../static/js/moo/mootools-1.2.5-core-yc.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		window.addEvent('domready', function(){
+			$$('ul#list li:odd').setStyle('background', '#eee');
+			$$('ul#list li:first-child').setStyle('background', '#ccc');
+			$$('ul#list li:last-child').setStyles({'background': '#333', 'color': '#ccc'});
+		})
+	</script>
+</head>
+<body>
+<h1>Javascript - Mootools add class elements using odd/even/child selectors</h1>
+<p class="subhdr"><strong>Default state:</strong> list rows styled on domready</p>
+<p class="subhdr"><strong>Requirements:</strong> Mootools 1.2.5 core, javascript enabled<br /><br /></p>
+<ul id="list">
+	<li>Row 1</li>
+	<li>Row 2</li>
+	<li>Row 3</li>
+	<li>Row 4</li>
+	<li>Row 5</li>
+	<li>Row 6</li>
+	<li>Row 7</li>
+	<li>Row 8</li>
+	<li>Row 9</li>
+	<li>Row 10</li>
+</ul>
+</body>
+</html>
