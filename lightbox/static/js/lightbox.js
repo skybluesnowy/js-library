@@ -1,3 +1,27 @@
+$(document).ready(function(){
+        
+    // invoke lightbox
+    $('#try-1').click(function(e) {
+        $('#sign_up').lightbox_me({
+            centered: true, 
+            onLoad: function() { 
+                // add focus if you have an input field
+                // $('#sign_up').find('input:first').focus()
+            }
+        });
+        e.preventDefault();
+    });
+    
+    // close trigger for lightbox
+    $('.lightbox .close').click(function(e){
+        e.preventDefault();
+        $('.lightbox').trigger('close');
+        // if you have a video in your lightbox, you can pause it on close
+        // $('#walkthroughVideo').get(0).pause();
+    });
+});
+
+
 /*
 * $ lightbox_me
 * By: Buck Wilson
