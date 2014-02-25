@@ -11,12 +11,10 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
          url('../fonts/random.svg#random') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 body {font-family: 'random'; font-size: 1.7em;}
 .right {float: right; overflow: hidden; width: 85%;}
 #sidebar {width: 10%; background: #ccc; margin-right: 4%; border: 1px black solid; position: fixed;}
-
 #one, #two, #three, #four {height: 680px; border: 1px black solid; margin-bottom: 20px;}
 #one {background: #eee;}
 #two {background: #999; color: #fff;}
