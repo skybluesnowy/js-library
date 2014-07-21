@@ -1,0 +1,121 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie lt-ie10 lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie lt-ie10 lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie lt-ie10" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8">
+<title>KFC - Great Amrican Bites</title>
+<script type="text/javascript" src="static/js/jquery-1.9.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="static/css/global.css">
+<script type="text/javascript">
+	
+$(document).ready(function(){
+	var carouselNav = function(){
+		var currPos = 1;
+		var totalSlides = $('.carousel-items div').length;
+
+		$('.carousel-nav li').click(function(e){
+			e.preventDefault();
+			var navSelected = this.id;
+			var theId = navSelected.split("-");
+			var theIdSpl = theId[1];
+			
+			$('.carousel-nav li').removeClass('on');
+			$('#nav-' + theIdSpl).addClass('on');
+			$('.carousel-item').fadeOut(500);
+			$('#slide-' + theIdSpl).fadeIn(1000);
+			
+			currPos = parseInt(theIdSpl);
+		});
+		$('.arrow-left').click(function(){
+			if(currPos != 1){
+				currPos = currPos-1;
+				arrowActions();
+			}
+		})
+		$('.arrow-right').click(function(){
+			if(currPos != totalSlides){
+				currPos = currPos+1;
+				arrowActions();
+			}	
+		})
+
+		var arrowActions = function(){
+			
+			$('.carousel-nav li').removeClass('on');
+			$('#nav-' + currPos).addClass('on');
+			$('.carousel-item').fadeOut(500);
+			$('#slide-' + currPos).fadeIn(1000);
+		}
+		
+	}();
+})
+
+
+</script>
+<style type="text/css">
+#carousel {width: 300px; height: 300px; border: 1px red solid; overflow: hidden;}
+#carousel .carousel-items {position: relative;}
+#carousel .carousel-item {width: 300px; height: 300px; float: left;}
+.carousel-nav ul {overflow: hidden;}
+.carousel-nav li {float: left; padding: 0 10px 0 0;}
+.carousel-nav li.on {border: 1px red solid;}
+.arrow-left, .arrow-right {font-weight: bold; font-size: 150%; position: absolute; top: 150px; z-index: 1;}
+.arrow-left {left: 0;}
+.arrow-right {right: 0;}
+#slide-1, #slide-4, #slide-9 {background: #f00;}
+#slide-2, #slide-5, #slide-7 {background: #f0f;}
+#slide-3, #slide-6, #slide-8 {background: #00f;}
+</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="inner">
+			<div class="content">
+				<p>Image -logo</p>
+				<p>Type in your friend's name</p>
+				<form>
+					<input type="text">
+					<p>Choose a background that you like best</p>
+					<div id="carousel">
+						<div class="carousel-items">
+							<span class="arrow-left">&lt;</span>
+							<span class="arrow-right">&gt;</span>
+							<div class="carousel-item" id="slide-1">1</div>
+							<div class="carousel-item" id="slide-2" style="display: none;">2</div>
+							<div class="carousel-item" id="slide-3" style="display: none;">3</div>
+							<div class="carousel-item" id="slide-4" style="display: none;">4</div>
+							<div class="carousel-item" id="slide-5" style="display: none;">5</div>
+							<div class="carousel-item" id="slide-6" style="display: none;">6</div>
+							<div class="carousel-item" id="slide-7" style="display: none;">7</div>
+							<div class="carousel-item" id="slide-8" style="display: none;">8</div>
+							<div class="carousel-item" id="slide-9" style="display: none;">9</div>
+						</div>
+						
+					</div>
+
+					<div class="carousel-nav">
+						<ul>
+							<li id="nav-1" class="on">1</li>
+							<li id="nav-2">2</li>
+							<li id="nav-3">3</li>
+							<li id="nav-4">4</li>
+							<li id="nav-5">5</li>
+							<li id="nav-6">6</li>
+							<li id="nav-7">7</li>
+							<li id="nav-8">8</li>
+							<li id="nav-9">9</li>
+						</ul>
+					</div>
+				</form>
+				<p><a href="" title="CTA">CTA</a></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,339 @@
+/*
+YUI 3.17.2 (build 9c3c78e)
+Copyright 2014 Yahoo! Inc. All rights reserved.
+Licensed under the BSD License.
+http://yuilibrary.com/license/
+*/
+html {
+  color: #000;
+  background: #ffffff;
+}
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+fieldset,
+img {
+  border: 0;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+ol,
+ul {
+  list-style: none;
+}
+caption,
+th {
+  text-align: left;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+q:before,
+q:after {
+  content: '';
+}
+abbr,
+acronym {
+  border: 0;
+  font-variant: normal;
+}
+sup {
+  vertical-align: text-top;
+}
+sub {
+  vertical-align: text-bottom;
+}
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  *font-size: 100%;
+}
+legend {
+  color: #000000;
+}
+#yui3-css-stamp.cssreset {
+  display: none;
+}
+html {
+  width: 100%;
+  height: 100%;
+  background: url(../img/bg_desktop-stickers.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+html.forms {
+  width: 100%;
+  height: 100%;
+  background: url(../img/bg_desktop.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+body {
+  font-family: helvetica, arial, sans-serif;
+  color: #fff;
+}
+a {
+  color: #fff;
+  text-decoration: underline;
+}
+a:hover {
+  text-decoration: none;
+}
+a.disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+p.cta {
+  margin-bottom: 20px;
+}
+p.link {
+  margin-bottom: 30px;
+  font-size: 130%;
+}
+.logo {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+.container {
+  /*position: relative;*/
+
+  width: 100%;
+}
+.container .inner {
+  width: 1000px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container .inner .content {
+  margin-top: 60px;
+  text-align: center;
+}
+.container .inner .content .license {
+  margin-bottom: 35px;
+}
+.container .inner .content .notice {
+  position: relative;
+  width: 428px;
+  height: 233px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.container .inner .content .notice img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.container .inner .content .notice span {
+  font-size: 130%;
+  display: block;
+  position: relative;
+  z-index: 2;
+  padding: 65px 50px 0 50px;
+}
+.container .inner .content #landing p.social {
+  text-align: center;
+}
+.container .inner .content #landing p.social a {
+  display: inline-block;
+  width: 48px;
+  height: 47px;
+}
+.container .inner .content #landing p.social a:first-child {
+  padding-right: 18px;
+}
+.container .creating {
+  position: absolute;
+  text-align: center;
+  top: 45%;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container .license-sml {
+  position: absolute;
+  left: 60px;
+  top: 45px;
+}
+.container #cards {
+  width: 100%;
+  margin-top: 170px;
+  text-align: center;
+}
+.container #cards label {
+  color: #fff;
+  display: block;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 12px;
+  font-size: 130%;
+}
+.container #cards .input-container {
+  background: #fff;
+  font-size: 130%;
+  color: #8a8a8a;
+  width: 433px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 35px;
+  padding: 16px;
+  text-align: left;
+  overflow: hidden;
+}
+.container #cards .input-container input {
+  border: 0;
+  color: #8a8a8a;
+}
+.container #cards .input-container span {
+  float: right;
+}
+.container #cards #slide-container {
+  width: 100%;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+.container #cards #slide-container .current-slide {
+  margin-left: auto;
+  margin-right: auto;
+  width: 504px;
+  padding-left: 20px;
+}
+.container #cards #slide-container .previous-slide {
+  position: absolute;
+  left: -250px;
+  top: 0;
+}
+.container #cards #slide-container .next-slide {
+  position: absolute;
+  right: -250px;
+  top: 0;
+}
+.container #cards #slide-container .pagination {
+  display: block;
+  position: absolute;
+  top: 140px;
+  z-index: 10;
+  background: url(../img/spr_arrows.png) no-repeat 0 0;
+  width: 19px;
+  height: 34px;
+  overflow: hidden;
+}
+.container #cards #slide-container .next {
+  right: 50px;
+  background-position: -19px 0;
+}
+.container #cards #slide-container .previous {
+  left: 50px;
+}
+.container #details {
+  width: 100%;
+  margin-top: 170px;
+  text-align: center;
+}
+.container #details label {
+  color: #fff;
+  display: block;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 12px;
+  font-size: 130%;
+}
+.container #details .input-container {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 470px;
+  font-size: 130%;
+}
+.container #details .input-container input {
+  width: 100%;
+  border: 0;
+  color: #8a8a8a;
+  display: block;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+#share {
+  width: 100%;
+  margin-top: 170px;
+  text-align: center;
+}
+#share #generated-image {
+  background: url(../img/bg_generated-image.png) no-repeat;
+  width: 582px;
+  height: 388px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  text-align: left;
+}
+#share a.edit {
+  padding-right: 10px;
+}
+#share p.link {
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 350px;
+  line-height: 1.5em;
+}
+
+/* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */

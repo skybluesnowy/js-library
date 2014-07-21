@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+</head>
+<body>
+<script type="text/javascript">
+$(document).ready(function(){
+  
+function text_counter (input_text, target) {
+  var max = 20;//$(input_text).attr("maxlength");
+    $(input_text).keydown (function () {
+      var text = $(input_text).val();
+      var current = text.length;
+      $(target).text(current + "/" + max);
+    });
+}               
+text_counter ("#description", "#description_counter");
+
+});
+</script>
+
+  <input id="description" type="text"  maxlength="20" value="Default text" ></textarea>
+<span id="description_counter"></span>
+</body>
+</html>
