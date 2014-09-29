@@ -1,5 +1,4 @@
 @import url("reset.less");
-@import url("mixins.less");
 
 html {
 	width: 100%; 
@@ -10,7 +9,7 @@ html {
   	-o-background-size: cover;
   	background-size: cover;
 }
-html.forms {
+html.plain {
   	width: 100%; 
 	height: 100%; 
 	background: url(../img/bg_desktop.jpg) no-repeat center center fixed; 
@@ -85,10 +84,11 @@ p.link {
 							position: relative;	
 							z-index:2; 
 							padding:65px 50px 0 50px;
+							color: #252b15;
 						}
 					}
 				
-				#loading {}	
+				
 				#start {}
 				#landing {
 					p.social {
@@ -107,7 +107,8 @@ p.link {
 			}
 
 		}
-		.creating {
+		
+		.loading, .creating {
 			position: absolute;
 			text-align: center;
 			top: 45%;
@@ -142,7 +143,7 @@ p.link {
 				margin-left: auto;
 				margin-right: auto;
 				margin-bottom: 35px;
-				padding: 16px;
+				padding: 14px;
 				text-align: left;
 				overflow: hidden;
 				input {
@@ -203,7 +204,7 @@ p.link {
 			label {
 				color: #fff;
 				display: block;
-				width: 300px;
+				width: 360px;
 				margin-left: auto;
 				margin-right: auto;
 				margin-bottom: 12px;
@@ -211,10 +212,10 @@ p.link {
 
 			}
 			.input-container {
-
 				text-align: center;
 				margin-left: auto;
 				margin-right: auto;
+				margin-bottom: 30px;
 				width: 470px;
 				font-size: 130%;
 				input {
@@ -222,11 +223,10 @@ p.link {
 					border: 0;
 					color: #8a8a8a;		
 					display: block;
-					padding: 16px;	
+					padding: 14px;	
 					margin-bottom: 20px;
+				}
 			}
-			}
-			
 		}
 	}
 	#share {

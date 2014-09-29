@@ -1,8 +1,0 @@
-a {text-decoration: none;}
-#top-nav {border-top: 2px #d4f0f2 solid; margin: 20px 0 0 0;}
-#top-nav .nav ul#nav {margin: 0; }
-	#top-nav .nav ul#nav li {float: left; display: block; min-width: 100px; border-left: 2px #d4f0f2 solid; position: relative; z-index: 500; padding: 4px 0 6px 19px; color: #1A3989; background: #f4fbfc;}
-			#top-nav .nav ul#nav li:hover {background: #d4f0f2;}
-				ul#nav ul {position: absolute; left: 0; display: none; background: #fff; border: 2px #D4F0F2 solid; left: -2px; top: 30px; margin: 0; padding: 0; width: 150px;}
-				#top-nav .nav ul#nav li ul li {float: none; border: none; font-size: 80%; margin: 0; padding: 0 0 10px 10px;}
-				#top-nav .nav ul#nav li ul li:hover {background: #ccc;}

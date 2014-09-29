@@ -1,5 +1,0 @@
-//js
-
-$(function() {
-$( "#accordion" ).accordion();
-});

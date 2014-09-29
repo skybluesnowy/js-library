@@ -1,0 +1,14 @@
+{
+  "name": "grunt-test",
+  "version": "1.0.0",
+  "description": "My first grunt file",
+  "main": "Grunfile.js",
+  "scripts": {
+    "test": "hello"
+  },
+  "author": "frazer harte",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  }
+}

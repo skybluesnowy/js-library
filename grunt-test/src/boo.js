@@ -1,0 +1,2 @@
+alert("bosh");
+alert("boom");
