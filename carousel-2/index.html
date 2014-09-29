@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<title>Simple JQuery Carousel</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<script type="text/javascript" src="../static/js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="static/js/global.js"></script>
+	<script type="text/javascript">
+	heroCarousel = function(){
+    var timer = setInterval(showBlock, 5000);
+    var carCounter = 0;
+    var carouselLength = $('.carousel-item').length-1;
+    var nextSlide = 0;
+    /* Carousel auto */
+    function showBlock(){
+        carCounter == carouselLength? carCounter = 0 : carCounter++;
+        $('.carousel-block div.carousel-item').fadeOut();
+        $('#carousel'+carCounter).fadeIn(1000);
+        $('.carousel-nav a').removeClass('on');
+        var carLink = $('.carousel-nav a#carlink'+carCounter);
+        $(carLink).addClass('on');
+    };
+
+    /* Carousel clickable nav */
+    $('.carousel-nav a').click(function(e){
+        e.preventDefault();
+    //                clearInterval(timer);
+    $('.carousel-nav a').removeClass('on');
+    $(this).addClass('on');
+    var currSlideSplit = (this.id).split("carlink");
+    var currSlide = currSlideSplit[1];
+    $('.carousel-item').css('display','none');
+    $('#carousel'+currSlide).css('display','block');    
+    carCounter = currSlide;
+    clearInterval(timer);
+    setTimeout(function() {
+        timer = setInterval(showBlock, 5000);
+
+    });
+}); 
+
+};
+$(document).ready(function(){
+    var slideLength = $('.carousel-item').length;
+    if (slideLength > 1){
+        $('.carousel-nav').css('display','block');
+        heroCarousel();    
+    }
+    
+})</script>
+	<link rel="stylesheet" type="text/css" href="static/css/global.css"/>
+	
+</head>
+
+<body>
+<section class="hero">
+    <!-- Top navigation -->
+    
+    <div class="heroContent">
+
+        <!-- Carousel -->
+        <div class="carousel-block">
+	    <div class="carousel-items">
+        
+        
+         <div class="carousel-item intro" id="carousel0" style="display: block;">
+           <div class="content">
+                        <img src="/content/dam/bst/tread-trend/hero-carousel-hdr1.png" alt="Behind the wheel" class=""/>
+                        <img src="/content/dam/bst/tread-trend/hero-carousel-strap1.png" alt="Explore. Discover.Share" class=""/>
+                                <p>Welcome to Tread & Trend - your definitive resource for all things tires. Learn about proper tire care, discover the latest innovations in tire technology, and explore the ways Bridgestone is making a difference in the industry and across the globe. <br>
+                <em>So go on, get behind the wheel and start exploring.</em></p>
+                    </div> 
+         </div>
+
+
+
+
+
+
+	<div class="carousel-item drivers-ed" id="carousel1" style="display: none;">
+	    <img class="cover" src="/content/dam/bst/tread-trend/teasers/Drivers-Ed_runflat_hero-image.resize.original-0-0-0-1400-0.jpg"/>
+	    <div class="content">
+	        <div class="icon">Driver's Ed</div>
+	        <p class="strap">How Run Flat Tires Work</p>
+	        <p>Though they first appeared in the mid-1980s, run flat tires (RFT) are now more popular than ever.</p> 
+	        <p><a class="cta" href="/tread-and-trend/drivers-ed/run-flat-tires" title="Read more">Read more<span>&gt;</span></a></p>
+	    </div>    
+	</div>
+
+
+
+
+	<div class="carousel-item lets-ride" id="carousel2" style="display: none;">
+	    <img class="cover" src="/content/dam/bst/tread-trend/raw/top-roads.resize.original-0-0-0-1400-0.jpg"/>
+	    <div class="content">
+	        <div class="icon">Let's Ride</div>
+	        <p class="strap">Ten to Tour: The Best Driving Roads in the World</p>
+	        <p>It’s spring, and a car lover’s thoughts turn to road trips. </p> 
+	        <p><a class="cta" href="/tread-and-trend/lets-ride/top-10-roads" title="Read more">Read more<span>&gt;</span></a></p>
+	    </div>    
+	</div>
+
+
+
+
+	<div class="carousel-item tire-talk" id="carousel3" style="display: none;">
+	    <img class="cover" src="/content/dam/bst/tread-trend/raw/driveguard.resize.original-0-0-0-1400-0.jpg"/>
+	    <div class="content">
+	        <div class="icon">Tire Talk</div>
+	        <p class="strap">The Reimagined Run-Flat: DriveGuard</p>
+	        <p>At Bridgestone, we’ve always been in the fast lane when it comes to innovation. We produced our very first tire in the early 1900’s and have been on the forefront of tire technology ever since. </p> 
+	        <p><a class="cta" href="/tread-and-trend/tire-talk/its-time-for-change-driveguard" title="Read more">Read more<span>&gt;</span></a></p>
+	    </div>    
+	</div>
+
+
+
+
+	<div class="carousel-item global-good" id="carousel4" style="display: none;">
+	    <img class="cover" src="/content/dam/bst/tread-trend/raw/rethink-green.resize.original-0-0-0-1400-0.jpg"/>
+	    <div class="content">
+	        <div class="icon">Global Good</div>
+	        <p class="strap">Rethink Green with Bridgestone</p>
+	        <p>Did you know that widespread use of the term “sustainable” has been around since the 1970s? Or that the first “sustainable development” was dreamt up in the late 1980s? [1] Green, it seems, has been on our minds for quite a while.</p> 
+	        <p><a class="cta" href="/tread-and-trend/global-good/rethink-green-with-bridgestone" title="Read more">Read more<span>&gt;</span></a></p>
+	    </div>    
+	</div>
+            </div>
+	        
+
+
+<div class="carousel-nav">
+
+            <a href="#" title="Go to slide 1" id="carlink0" class="on"><span>1</span></a>
+
+            <a href="#" title="Go to slide 2" id="carlink1" class="off"><span>2</span></a>
+
+            <a href="#" title="Go to slide 3" id="carlink2" class="off"><span>3</span></a>
+
+            <a href="#" title="Go to slide 4" id="carlink3" class="off"><span>4</span></a>
+
+            <a href="#" title="Go to slide 5" id="carlink4" class="off"><span>5</span></a>
+
+</div>
+        </div>       
+    </div>
+</section> 
+</body>
+</html>
